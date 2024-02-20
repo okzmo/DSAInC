@@ -7,9 +7,9 @@ int partition(int numbers[], int lo, int hi) {
   for (int i = lo; i < hi; i++) {
     if (numbers[i] <= pivot) {
       idx++;
-      int tmp = numbers[i];
-      numbers[i] = numbers[idx];
-      numbers[idx] = tmp;
+      int tmp = numbers[idx];
+      numbers[idx] = numbers[i];
+      numbers[i] = tmp;
     }
   }
 
@@ -25,17 +25,18 @@ void qs(int numbers[], int lo, int hi) {
     return;
   }
 
-  int pivotIdx = partition(numbers, lo, hi);
+  int pivot = partition(numbers, lo, hi);
 
-  qs(numbers, lo, pivotIdx - 1);
-  qs(numbers, pivotIdx + 1, hi);
+  qs(numbers, lo, pivot-1);
+  qs(numbers, pivot+1, hi);
 }
 
 int main() {
-  int numbers[] = {2, 8, 5, 9, 2, 10, 82, 0, 823};
+  int numbers[] = {2, 8, 5, 9, 2, 7};
   int length = sizeof(numbers) / sizeof(numbers[0]);
 
-  qs(numbers, 0, length - 1);
+  qs(numbers, 0, length-1);
+
   for (int i = 0; i < length; i++) {
     printf("%d,", numbers[i]);
   }

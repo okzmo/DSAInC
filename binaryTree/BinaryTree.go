@@ -105,7 +105,6 @@ func (b *BinaryTree) Remove(val int) (*Node, error) {
 }
 
 func main() {
-	fmt.Println("hello world")
 	binaryTree := BinaryTree{head: Node{val: 5}}
 	binaryTree.Insert(10)
 	binaryTree.Insert(2)
